@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import './assets/main.css';
+import './main.css';
 
 function App() {
   const [stats, setStats] = useState({
