@@ -47,6 +47,31 @@ Click More Info.
 
 Click Run Anyway.
 
+## 💻 Running Clarity Locally (Development Mode)
+If you are a developer, you can run and modify the Clarity Dashboard directly from the source code.
+
+Get the Code & Install Dependencies
+Download the Code: Download the zipped source files (or clone the repository).
+Open in VS Code: Open the project folder (clarity-v1 or similar) in Visual Studio Code.
+
+Install Libraries: Open the Integrated Terminal (Ctrl + ~) and run the installer commands. This downloads all necessary dependencies (React, Electron, systeminformation).
+
+Bash
+
+npm install
+If you see any warnings about packages failing to compile (e.g., osx-temperature-sensor), run npm run postinstall to rebuild them for Electron.
+
+Launch the Application
+In the same VS Code Terminal, run the development script:
+Bash
+
+npm run dev
+Verify: A new desktop window should open automatically, displaying the Clarity Dashboard. Data (like CPU, Memory, Network speed) should start updating every 2 seconds.
+
+Working with the Code
+Frontend (UI): Edit the files in the src/renderer/src/ folder (App.jsx and main.css). Changes will appear instantly in the running Electron window thanks to Hot Module Replacement (HMR).
+Backend (Data): Edit src/main/index.js to adjust data fetching logic (like adding new system metrics). You will need to stop the app (Ctrl + C) and run npm run dev again after editing backend files.
+
 ## 🛠 Tech Stack
 Frontend: React.js + Vite
 
