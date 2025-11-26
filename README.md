@@ -1,4 +1,4 @@
-### Clarity Dashboard v1.0.0 🚀
+# Clarity Dashboard v1.0.0 🚀
 Clarity is a minimalist, real-time system resource monitor built for simplicity and focus. It provides a clean overview of your computer's health without the clutter of complex task managers.
 
 (Optional: Upload a screenshot of your app here)
