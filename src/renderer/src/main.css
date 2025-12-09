@@ -1,0 +1,438 @@
+/* --- IMPORT FONT: OUTFIT --- */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+:root {
+  --text-color: #333;
+  --bg-color: #f5f7fa;
+  --primary-color: #007bff;
+}
+
+body {
+    background-color: #000000;
+    color: #f5f7fa;
+    margin: 0;
+    font-family: 'Outfit', sans-serif;
+    transition: background-image 0.5s ease;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ==================================== */
+/* 2. BACKGROUND (Adjusted Size)        */
+/* ==================================== */
+
+.gradient-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; 
+    background: #000; 
+    overflow: hidden;
+}
+
+.gradient-blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.6; /* Slightly lower opacity for subtler look */
+    animation: float 20s infinite alternate ease-in-out;
+    transition: background 1s ease;
+}
+
+/* REDUCED SIZES HERE */
+.blob-1 {
+    background: var(--color-a, #f39c12); 
+    width: 45vw; /* Reduced from 70vw */
+    height: 45vw;
+    top: -5%;
+    left: -5%;
+}
+
+.blob-2 {
+    background: var(--color-c, #e67e22);
+    width: 50vw; /* Reduced from 80vw */
+    height: 50vw;
+    bottom: -5%;
+    right: -5%;
+    animation-delay: -5s;
+    animation-duration: 25s;
+}
+
+.blob-3 {
+    background: var(--color-b, #d35400);
+    width: 35vw; /* Reduced from 50vw */
+    height: 35vw;
+    top: 30%;
+    left: 30%;
+    opacity: 0.5;
+    animation-delay: -10s;
+    animation-duration: 18s;
+}
+
+@keyframes float {
+    0% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(10%, 15%) scale(1.1); }
+    66% { transform: translate(-5%, 5%) scale(0.9); }
+    100% { transform: translate(5%, -10%) scale(1.05); }
+}
+
+/* ==================================== */
+/* 3. LAYOUT & HEADER                   */
+/* ==================================== */
+
+.dashboard-container {
+    padding: 0 40px 40px; 
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.dashboard-header {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start; 
+    gap: 20px; 
+    padding: 30px 0 20px 0;
+}
+
+.header-logo h1 {
+    font-size: 2.5rem;
+    color: #fff;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    margin: 0;
+    line-height: 1;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding-left: 10px; 
+    font-weight: 700;
+}
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px; 
+    width: 100%; 
+}
+
+/* ==================================== */
+/* 4. STATUS BAR & CONTROLS             */
+/* ==================================== */
+
+.status-bar-card {
+    background: rgba(255, 255, 255, 0.05); 
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    flex-grow: 1; 
+    
+    height: 60px;
+    padding: 0 25px;
+    border-radius: 30px; 
+    cursor: default;
+}
+
+.device-identity {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-size: 1.1rem;
+    color: #fff;
+    font-weight: 600;
+}
+
+/* Tiny Icons for Device Name */
+.device-identity img {
+    width: 24px;
+    height: 24px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.connection-status {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+    color: #ccc;
+    margin-left: auto; 
+}
+
+.status-badge {
+    color: white;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+/* Theme Button */
+.theme-toggle-btn {
+    background: rgba(255, 255, 255, 0.05); 
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+
+    width: 60px; 
+    height: 60px;
+    border-radius: 50%; 
+    flex-shrink: 0; 
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.theme-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+    border-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.theme-toggle-btn img {
+    width: 28px;
+    height: 28px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+/* Dropdown */
+.background-selector {
+  position: absolute;
+  bottom: 75px; 
+  right: 0; 
+  width: max-content;
+  background-color: rgba(30, 30, 30, 0.95); 
+  backdrop-filter: blur(15px);
+  border-radius: 15px; 
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.background-selector:not(.hidden) {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.selector-item { padding: 0; background: none; }
+
+.color-circle {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.2s;
+}
+.color-circle:hover { transform: scale(1.2); }
+.color-circle.active { border-color: #fff; box-shadow: 0 0 8px #fff; }
+
+
+/* ==================================== */
+/* 5. MAIN GRID                         */
+/* ==================================== */
+
+.dashboard-grid {
+  grid-template-columns: 1fr 1fr 1fr; 
+  gap: 20px;
+  display: grid;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05); 
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-radius: 16px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-4px);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.card h3 {
+    margin: 0 0 5px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    font-weight: 600; 
+}
+
+.card .metric {
+    font-size: 1.8rem;
+    font-weight: 700; 
+    margin-bottom: 10px;
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.status-indicator {
+    font-size: 0.8rem;
+    font-weight: 700;
+    margin-top: auto;
+    transition: color 0.5s ease;
+}
+
+/* --- UPDATED IMAGE ICON STYLING --- */
+.card-icon {
+  width: 30px; /* Set specific width for images */
+  height: 30px; 
+  object-fit: contain;
+  margin-bottom: 15px;
+  display: block;
+  /* Adds a nice shadow to the PNG icon itself */
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.4)); 
+  transition: transform 0.2s ease;
+}
+
+.card:hover .card-icon {
+    transform: scale(1.05); /* Subtle pop on hover */
+}
+
+.metric-bar-container {
+    width: 100%;
+    height: 4px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    margin-top: 15px;
+    overflow: hidden;
+}
+.metric-bar-fill {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.5s ease, background-color 0.5s ease;
+    box-shadow: 0 0 8px currentColor;
+}
+
+/* ==================================== */
+/* 6. AI CARD & MODALS                  */
+/* ==================================== */
+
+.ai-card {
+  grid-column: 1 / -1;
+  flex-direction: row; 
+  align-items: center; 
+  min-height: 70px;
+  padding: 0 30px;
+}
+
+.ai-card .ai-message {
+  margin: 0 0 0 20px;
+  font-size: 1rem;
+  color: rgba(255,255,255,0.8);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 300; 
+}
+
+/* Adjust AI Icon size specifically if needed */
+.ai-card .card-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 0;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    animation: fadeIn 0.3s ease-out forwards;
+}
+.modal-content {
+    background: rgba(30, 30, 30, 0.95);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 40px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 600px;
+    color: #fff;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+    animation: scaleUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    max-height: 85vh;
+    overflow-y: auto;
+}
+.modal-content h2 { font-weight: 700; }
+
+.close-btn {
+    position: sticky; top: 0; float: right;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%; width: 35px; height: 35px;
+    display: flex; justify-content: center; align-items: center;
+    font-size: 1.5rem; color: #fff; cursor: pointer;
+    z-index: 100; margin-bottom: 20px;
+    margin-top: -10px; margin-right: -10px;
+    transition: all 0.2s ease;
+}
+.close-btn:hover { background: rgba(255, 255, 255, 0.3); transform: rotate(90deg); }
+.detail-row { border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding: 12px 0; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes scaleUp { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+/* ==================================== */
+/* 7. RESPONSIVE BREAKPOINTS            */
+/* ==================================== */
+
+@media (max-width: 768px) {
+    .dashboard-grid { grid-template-columns: 1fr 1fr; }
+    
+    .status-bar-card { padding: 0 20px; }
+    .connection-status p { display: none; } 
+    .device-identity { font-size: 1rem; }
+    .device-identity span {
+        white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100px;
+    }
+}
+
+@media (max-width: 500px) {
+    .dashboard-grid { grid-template-columns: 1fr; }
+    
+    .header-controls {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 10px;
+    }
+    
+    .status-bar-card { width: 100%; height: auto; padding: 15px; }
+    .theme-toggle-btn { width: 100%; border-radius: 16px; height: 50px; } 
+    .background-selector { top: 60px; width: 100%; justify-content: center; }
+    
+    .ai-card { grid-column: auto; flex-direction: column; align-items: flex-start; height: auto; padding: 20px; }
+    .ai-card .ai-message { margin: 10px 0 0 0; }
+}
