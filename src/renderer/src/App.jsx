@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "./main.css";
 
 // --- ASSET IMPORTS ---
+// Ensure these images exist in src/renderer/src/assets/icons/
 import iconCpu from "./assets/icons/cpu.png";
 import iconMem from "./assets/icons/mem.png";
 import iconTemp from "./assets/icons/temp.png";
@@ -35,9 +36,10 @@ const ICONS = {
 const GRADIENT_OPTIONS = [
   {
     name: "Orange Glow",
+    // Updated RGB to match #fe7857 (254, 120, 87)
     gradient:
-      "radial-gradient(circle at 10% 90%, rgba(243, 156, 18, 0.9) 0%, rgba(0, 0, 0, 1) 90%)",
-    primaryColor: "#f39c12",
+      "radial-gradient(circle at 10% 90%, rgba(254, 120, 87, 0.9) 0%, rgba(0, 0, 0, 1) 90%)",
+    primaryColor: "#fe7857", // Your new specific orange
   },
   {
     name: "Red Flare",
@@ -68,6 +70,7 @@ const GRADIENT_OPTIONS = [
 
 const saveBackgroundPref = (name) =>
   localStorage.setItem("clarity_background", name);
+// Defaults to Orange Glow if no preference is found
 const loadBackgroundPref = () =>
   localStorage.getItem("clarity_background") || "Orange Glow";
 
@@ -81,8 +84,8 @@ const MetricBar = ({
 }) => {
   const defaultColorFn = (p) => {
     if (p <= 60) return activePrimaryColor;
-    if (p <= 80) return "#f1c40f";
-    return "#e74c3c";
+    if (p <= 80) return "#f1c40f"; // Yellow
+    return "#e74c3c"; // Red
   };
   const getColor = colorFn || defaultColorFn;
   const safePercent = isNaN(percent) ? 0 : Math.min(Math.max(percent, 0), 100);
@@ -285,12 +288,18 @@ function App() {
       </div>
 
       <header className="dashboard-header">
+        {/* Logo with 1/4 Circle Shape */}
         <div className="header-logo">
+          <div
+            className="logo-shape"
+            style={{ backgroundColor: activePrimaryColor }}
+          ></div>
           <h1>CLARITY</h1>
         </div>
 
+        {/* Controls: Status Pill + Theme Picker */}
         <div className="header-controls">
-          {/* Part A: The Line */}
+          {/* Part A: The Line (Status Pill) */}
           <div className="status-bar-card">
             <div
               className="device-identity"
@@ -319,7 +328,7 @@ function App() {
             </div>
           </div>
 
-          {/* Part B: The Dot */}
+          {/* Part B: The Dot (Theme Picker) */}
           <div
             className="theme-toggle-btn"
             onClick={() =>
@@ -389,7 +398,7 @@ function App() {
           onClick={() => setSelectedCard("temp")}
         >
           <img src={ICONS.temp} className="card-icon" alt="Temp" />
-          <h3>Temp</h3>
+          <h3>Temperature</h3>
           <div className="metric">
             {stats.temp > 0 ? (
               `${stats.temp}°C`
@@ -434,9 +443,7 @@ function App() {
         >
           <img src={ICONS.battery} className="card-icon" alt="Battery" />
           <h3>Battery</h3>
-          <p className="metric" style={{ fontSize: "1.2rem" }}>
-            {stats.battery}
-          </p>
+          <div className="metric">{stats.battery}</div>
         </div>
 
         <div
