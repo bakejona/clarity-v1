@@ -36,7 +36,8 @@ body {
     position: absolute;
     border-radius: 50%;
     filter: blur(80px);
-    opacity: 0.3; /* Slightly lower opacity for subtler look */
+    opacity: 0.3
+    ; /* Slightly lower opacity for subtler look */
     animation: float 20s infinite alternate ease-in-out;
     transition: background 1s ease;
 }
@@ -179,7 +180,7 @@ body {
 }
 
 .status-badge {
-    color: white;
+    color: rgb(0, 0, 0);
     padding: 4px 12px;
     border-radius: 20px;
     font-size: 0.75rem;
