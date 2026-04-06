@@ -1,59 +1,92 @@
-### Clarity Dashboard v1.0.0 🚀
+# Clarity Dashboard v1.0.0
+
 Clarity is a minimalist, real-time system resource monitor built for simplicity and focus. It provides a clean overview of your computer's health without the clutter of complex task managers.
 
-(Optional: Upload a screenshot of your app here)
+---
 
-## ✨ Key Features
-Real-Time Monitoring: accurate, live updates for CPU, Memory (RAM), GPU, Temperature, Battery, and Network speeds.
+## Features
 
-Smart Diagnostics: Built-in logic analyzes your stats to provide simple, human-readable health summaries (e.g., "High Load," "Battery Low").
+- **Real-Time Monitoring** — Live updates every 2 seconds for CPU, Memory (RAM), GPU, Temperature, Battery, and Network
+- **Smart Diagnostics** — Built-in health analysis with human-readable summaries ("System is running smoothly", "High CPU Load", etc.)
+- **Deep Dive Modals** — Click any card for advanced specs:
+  - CPU: Chipset model, core/thread count, top 5 processes by CPU usage
+  - Memory: Per-slot module details (type, speed, size, manufacturer)
+  - GPU: Utilization, temperature, VRAM, vendor
+  - Network: Active interface, link speed, download/upload speeds, ping/latency
+- **Visual Alerts** — Color-coded indicators (green / yellow / red) for instant status recognition
+- **Theme Picker** — 6 gradient themes with animated glassmorphism backgrounds
+- **Privacy First** — All data is read locally. No cloud connections, no telemetry
 
-Deep Dive Modals: Click any card to reveal advanced specifications:
+---
 
-CPU: Chipset model, Core/Thread counts, and Top 5 resource-hogging processes.
+## Installation
 
-Memory: Detailed breakdown of individual RAM sticks/modules.
+### macOS (Apple Silicon & Intel)
 
-GPU: VRAM usage, Core Utilization, Clock speeds, and driver versions.
+1. Download **`clarity-dashboard-darwin-arm64-1.0.0.zip`** from the [Releases](../../releases) page
+2. Unzip the file — you'll get **Clarity Dashboard.app**
+3. Drag it to your **Applications** folder
+4. Double-click to open
 
-Network: Active Interface, Link Capacity, and Ping/Latency stability.
+> **Seeing "app is damaged" or "cannot be opened"?**
+> This app is not notarized with Apple. To bypass the warning:
+>
+> Option A — Right-click the app icon, choose **Open**, then click **Open** in the dialog.
+>
+> Option B — Run this once in Terminal:
+> ```bash
+> xattr -cr "/Applications/Clarity Dashboard.app"
+> ```
 
-Visual Alerts: Color-coded indicators (Green/Yellow/Red) for instant status recognition.
+---
 
-Privacy Focused: All data is processed locally on your machine. No cloud connections.
+### Windows
 
-## 📥 Installation
-macOS (Apple Silicon & Intel)
-Download Clarity-1.0.0.dmg on the releases page.
+1. Download **`clarity-dashboard-win32-x64-setup.exe`** from the [Releases](../../releases) page
+2. Run the installer
+3. If you see **"Windows protected your PC"**: click **More info** then **Run anyway**
+4. Clarity will launch automatically after install
 
-Double-click to open and drag the app to your Applications folder.
+---
 
-Note: Since this is a student project, it is not signed by the Mac App Store.
+## Build From Source
 
-If you see a warning that the app is damaged or cannot be opened:
+**Requirements:** Node.js 18+, npm
 
-Right-click the app icon and select Open.
+```bash
+# Clone the repo
+git clone https://github.com/bakejona/clarity-v1.git
+cd clarity-v1
 
-Click Open in the popup dialog.
+# Install dependencies
+npm install
 
-Windows
-Download Clarity-1.0.0-setup.exe on the releases page.
+# Run in development mode
+npm run dev
 
-Run the installer.
+# Build + package for your current platform
+npm run build && npm run make
+```
 
-If you see a "Windows protected your PC" warning:
+Packaged installers are output to `dist/make/`.
 
-Click More Info.
+| Platform | Output |
+|----------|--------|
+| macOS | `dist/make/zip/darwin/arm64/` |
+| Windows | `dist/make/squirrel.windows/` |
 
-Click Run Anyway.
+---
 
-## 🛠 Tech Stack
-Frontend: React.js + Vite
+## Tech Stack
 
-Backend: Electron.js
+| Layer | Technology |
+|-------|-----------|
+| UI | React 18 + Vite |
+| Desktop | Electron 28 |
+| System Data | systeminformation |
+| Styling | Custom CSS (glassmorphism) |
+| Packaging | Electron Forge |
 
-System Data: systeminformation library
+---
 
-Styling: Custom CSS with FontAwesome 6
-
-Created by Jonathan Baker as a Capstone Project.
+Created by Jonathan Baker

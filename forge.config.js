@@ -2,8 +2,12 @@ const { FusesPlugin } = require('@electron-forge/plugin-fuses');
 const { FuseV1Options, FuseVersion } = require('@electron/fuses');
 
 module.exports = {
+  // Forge outputs installers to dist/ so it doesn't conflict with electron-vite's out/ build dir
+  outDir: 'dist',
   packagerConfig: {
     asar: true,
+    // Clear forge's hardcoded /^\/out\// ignore so the electron-vite build output is included
+    ignore: [],
   },
   rebuildConfig: {},
   makers: [
