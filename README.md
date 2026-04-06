@@ -28,15 +28,9 @@ Clarity is a minimalist, real-time system resource monitor built for simplicity 
 3. Drag it to your **Applications** folder
 4. Double-click to open
 
-> **Seeing "app is damaged" or "cannot be opened"?**
-> This app is not notarized with Apple. To bypass the warning:
->
-> Option A — Right-click the app icon, choose **Open**, then click **Open** in the dialog.
->
-> Option B — Run this once in Terminal:
-> ```bash
-> xattr -cr "/Applications/Clarity Dashboard.app"
-> ```
+> **Seeing a security warning?**
+> This app is not notarized with Apple. Right-click the app icon, choose **Open**, then click **Open** in the dialog.
+> If the warning persists, go to **System Settings → Privacy & Security** and click **Open Anyway**.
 
 ---
 
